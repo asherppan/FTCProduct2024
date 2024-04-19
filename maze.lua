@@ -3,7 +3,7 @@
 local Maze = {};
 Maze.__index = Maze;
 
-function Maze.new(MazeMap: {[number]: {boolean}}, Start: Vector2, End: Vector2)
+function Maze.new(MazeMap: {[number]: {boolean}}, Start: {[string]: number}, End: {[string]: number})
 	-- MazeMap: A matrix that respresents the layout of the maze being solved.
 	-- Start: A 2D vector which represents the start of the maze
 	-- End: A 2D vector which represents the end of the maze
@@ -47,7 +47,6 @@ end;
 
 function Maze:_matchPaths(oldPath: {[number]: {boolean}}, newPath: {[number]: {boolean}})
 	local matchingPath = true;
-	print(oldPath, newPath)
 	for y in pairs(oldPath) do
 		for x, valid in pairs(oldPath[y]) do
 			if (newPath[y][x] ~= valid) then -- check if path has been modified
